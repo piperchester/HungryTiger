@@ -1,4 +1,4 @@
 HungryTiger
 ===========
 
-Hungry Tiger as a site that uses RIT's data API to inform users about currently open restaurants. 
+HungryTiger is a site that scrapes RIT's data to inform users about restaurants currently open on campus. 
