@@ -237,7 +237,6 @@ app.main = (function(){
 		html += "<p>" + des + "</p>";
 		html += "<p class='opens'>Opens at " + opening + "</p>\n";
 		html += "<p class='closes'>Closes at " + closing + "</p>\n";
-		html += "<a href='#' onclick=\"app.main.goToMarker(" + ((number === 0) ? number : (number - 1))  + "); return false;\" class='mapButton'>See on Map</a>";
 		html += "<p>" + full_des + "</p>";
 		html += "<a href='#' onclick='app.main.animateScroll(places); return false;' class='topButton'>Back to Top</a>";
 		html += "</div>"
