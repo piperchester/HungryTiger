@@ -90,9 +90,6 @@ app.main = (function(){
 
 	// PUBLIC METHODS
 	function init(){
-		// initializeMap() sets up the Google Map
-		initializeMap();
-
 		// Add events to UI
 		$("#ajax-loader").hide();
 
@@ -257,7 +254,6 @@ app.main = (function(){
 			}
 			mapData += "</h3>\n";
 			//mapData += "<a href='http://maps.google.com/maps?ll=" + latitude + "," + longitude + "'>Open in Google Maps</a>";
-			makeMarker(position,mapData,number);
 		}
 		//Append all this HTML to the html variable in the results for-loop
 		return html;
@@ -312,20 +308,6 @@ app.main = (function(){
 		return text;
 	}
 
-	//Pass in a marker number and it will go to that one
-	//Animated ;)
-	function goToMarker(number)
-	{
-		$('html, body').animate({
-			scrollTop: $("#map_canvas").offset().top - 50
-		}, 300,"linear",function(){
-			//alert("FUNIMATION complete");
-			infowindow.setContent("<p>" + placesArray[number] + "</p>\n<h3>" + ((openArray[number] === 1) ? "Open" : "Closed"));
-			infowindow.setPosition(markerArray[number]);
-			infowindow.open(map);
-		});
-	}
-
 	//Pass in a div with that ID
 	//Animate to it
 	function animateScroll(div)
@@ -370,45 +352,12 @@ app.main = (function(){
 			return list;
 		}
 
-		//Map Functions
-		function makeMarker(position,msg)
-		{
-			if(infowindow)
-			infowindow.close();
-			//close old info window and make new one
-			marker = new google.maps.Marker({
-				map: map,
-				position: position,
-				msg: msg,
-			});
-			markerArray.push(position);
-			google.maps.event.addListener(marker, 'click', function(){
-				infowindow.setContent(msg);
-				infowindow.setPosition(position);
-				infowindow.open(map);
-			});
-		}
-
-		// Sets up Google Map
-		function initializeMap() {
-			var myOptions = {
-				center: new google.maps.LatLng(43.083848,-77.6799),
-				zoom: 16,
-				mapTypeId: google.maps.MapTypeId.ROADMAP
-			};
-			// create google map
-			map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-			infowindow = new google.maps.InfoWindow();
-
-		};
-
 		// public interfaces
 		//If something outside the main function
 		//needs to call a function
 		//It has to go here
 		return{
 			init: init,
-			goToMarker: goToMarker,
 			animateScroll: animateScroll,
 			onJSONLoaded: onJSONLoaded
 		};
