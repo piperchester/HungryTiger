@@ -235,8 +235,7 @@ app.main = (function(){
 		html += "<div id =\"" + trimText(name,false) + "\">";
 		html += "<h2>" + name  + "</h2>\n";
 		html += "<p>" + des + "</p>";
-		html += "<p class='opens'>Opens at " + opening + "</p>\n";
-		html += "<p class='closes'>Closes at " + closing + "</p>\n";
+		html += "<p class='opens'>" + opening + " - " + closing + "</p>\n";
 		html += "<p>" + full_des + "</p>";
 		html += "<a href='#' onclick='app.main.animateScroll(places); return false;' class='topButton'>Back to Top</a>";
 		html += "</div>"
